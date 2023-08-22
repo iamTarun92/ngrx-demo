@@ -12,6 +12,9 @@ export class UsersService {
   getUsers() {
     return this.http.get('../../../assets/json/users.json')
   }
+  // getUsers(): Observable<Users[]> {
+  //   return this.http.get<Users[]>('../../../assets/json/users.json')
+  // }
   getAllData(searchTerm: string): Observable<Users[]> {
     return this.http.get<Users[]>(`https://jsonplaceholder.typicode.com/users?q=${searchTerm}`)
   }

@@ -1,8 +1,3 @@
-export interface iUser {
-    name: string,
-    email: string
-}
-
 export interface Users {
     address: Address;
     company: Company;
