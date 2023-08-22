@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-6">
+    <h5 class="card-title">Ex - 01 (toArray)</h5>
+    <hr />
+    <ul class="list-unstyled">
+      <li *ngFor="let item of arr1">User - {{ item }}</li>
+    </ul>
+  </div>
+  <div class="col-6">
+    <h5 class="card-title">Ex - 02 (toArray)</h5>
+    <hr />
+    <p *ngIf="!arr2.length">Loading data...</p>
+    <ul class="list-unstyled">
+      <li *ngFor="let item of arr2">User - {{ item }}</li>
+    </ul>
+  </div>
+</div>

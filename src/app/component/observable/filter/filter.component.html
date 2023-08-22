@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-6">
+    <h5 class="card-title">Ex - 01 (Filter by length)</h5>
+    <hr />
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of filterdata1">
+          <th scope="row">{{ item.id }}</th>
+          <td>{{ item.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-6">
+    <h5 class="card-title">Ex - 01 (Filter by gender)</h5>
+    <hr />
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Gender</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of filterdata2">
+          <th scope="row">{{ item.id }}</th>
+          <td>{{ item.name }}</td>
+          <td>{{ item.gender }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

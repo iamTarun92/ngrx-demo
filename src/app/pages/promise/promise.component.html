@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6">
+      <div class="card border-0" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">With Promise</h5>
+          <hr />
+          <button class="btn btn-primary" (click)="fatch1()">Click Me</button>
+          <hr />
+          <p id="result1" #result1>{{ promise_1 }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card border-0" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">With Async/Await</h5>
+          <hr />
+          <button class="btn btn-primary" (click)="fatch2()">Click Me</button>
+          <hr />
+          <p id="result2" #result2>{{ promise_2 }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

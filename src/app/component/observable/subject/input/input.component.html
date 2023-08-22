@@ -1,0 +1,8 @@
+<div class="card">
+  <div class="card-header">Input - {{ myInput.value }}</div>
+  <div class="card-body">
+    <h5 class="card-title">{{ myInput.value }}</h5>
+    <div class="mb-2"><input type="text" #myInput (keyup)="0" /></div>
+    <button class="btn btn-primary" (click)="setData(myInput)">Change Username</button>
+  </div>
+</div>

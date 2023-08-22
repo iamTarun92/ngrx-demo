@@ -1,0 +1,30 @@
+<div class="row">
+  <h5>
+    Search users - <span class="text-info fs-6">{{ searchResultsCount }} results found..</span>
+  </h5>
+  <form #searchform="ngForm">
+    <input
+      type="text"
+      class="form-control"
+      autocomplete="off"
+      ngModel
+      name="searchTerm"
+    />
+  </form>
+</div>
+<table class="table mt-5">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let result of searchResults">
+      <th scope="row">{{ result.id }}</th>
+      <td>{{ result.name }}</td>
+      <td>{{ result.email }}</td>
+    </tr>
+  </tbody>
+</table>
