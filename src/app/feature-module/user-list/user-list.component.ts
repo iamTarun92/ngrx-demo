@@ -7,11 +7,11 @@ import { UsersService } from '../../services/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.scss']
 })
-export class UsersComponent {
+export class UserListComponent {
   pageTitle = 'Store'
   users: Users[] = []
   constructor(private userService: UsersService, private store: Store) {

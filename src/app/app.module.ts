@@ -8,13 +8,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, metaReducers } from './store/user';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/user/user.effects';
-import { UsersComponent } from './pages/users/users.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CounterComponent } from './pages/counter/counter.component';
 import { counterReducer } from './store/counter/counter.reducer';
 import { HeaderComponent } from './component/header/header.component';
 import { PromiseComponent } from './pages/promise/promise.component';
-import { ObservableComponent } from './pages/observable/observable.component';
 import { ListComponent } from './component/observable/list/list.component';
 import { FormEventComponent } from './component/observable/form-event/form-event.component';
 import { IntervalTimerComponent } from './component/observable/interval-timer/interval-timer.component';
@@ -40,11 +37,8 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
 @NgModule({
   declarations: [
     AppComponent,
-    UsersComponent,
-    CounterComponent,
     HeaderComponent,
     PromiseComponent,
-    ObservableComponent,
     ListComponent,
     FormEventComponent,
     IntervalTimerComponent,
