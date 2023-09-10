@@ -35,8 +35,7 @@ import { UserComponent } from './component/user/user.component';
 import { EditUserComponent } from './component/edit-user/edit-user.component';
 import { AuthService } from './guard/auth.service';
 import { AuthGuard } from './guard/auth.guard';
-import { CounterOutputComponent } from './component/counter/counter-output/counter-output.component';
-import { CounterButtonComponent } from './component/counter/counter-button/counter-button.component';
+import { SidebarComponent } from './component/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -63,8 +62,7 @@ import { CounterButtonComponent } from './component/counter/counter-button/count
     ReplayComponent,
     UserComponent,
     EditUserComponent,
-    CounterOutputComponent,
-    CounterButtonComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,

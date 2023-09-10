@@ -1,9 +1,6 @@
 <div class="container mt-5">
-  <h1>Current Count: {{ counter }}</h1>
-  <app-counter-button
-    (increment)="OnIncrement()"
-    (decrement)="onDecrement()"
-    (reset)="onReset()"
-    class="mt-5"
-  ></app-counter-button>
+  <h1>Current Count: {{ (counter$ | async).counter }}</h1>
+  <button (click)="OnIncrement()" class="btn btn">Increment</button>
+  <button (click)="onDecrement()" class="btn btn">Decrement</button>
+  <button (click)="onReset()" class="btn btn">Reset</button>
 </div>

@@ -1,30 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Observable and Promise</a>
-    <span class="badge bg-primary" *ngIf="exclusive">Exclusive</span>
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          routerLink="promise"
-          routerLinkActive="active"
-          >Promise</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="observable" routerLinkActive="active"
-          >Observable</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="users" routerLinkActive="active"
-          >Users</a
-        >
-      </li>
-      <li class="nav-item">
-        <button (click)="onLoginClick()" *ngIf="!isLogedIn" class="btn">Login</button>
-        <button (click)="onLogoutClick()" *ngIf="isLogedIn" class="btn">Logout</button>
-      </li>
-    </ul>
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">codeStyle</a>
+  <input
+    class="form-control form-control-dark w-100"
+    type="text"
+    placeholder="Search"
+    aria-label="Search"
+  />
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a
+        class="nav-link px-3 btn"
+        href="javascript:void(0)"
+        (click)="onLoginClick()"
+        *ngIf="!isLogedIn"
+        >Login</a
+      >
+      <a
+        class="nav-link px-3"
+        href="javascript:void(0)"
+        (click)="onLogoutClick()"
+        *ngIf="isLogedIn"
+        >Logout</a
+      >
+    </div>
   </div>
-</nav>
+</header>
