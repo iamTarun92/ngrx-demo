@@ -1,10 +1,19 @@
-<div class="container mt-5">
+<div class="container my-5">
   <div class="row">
-    <h1 class="mb-3">Users List From      {{pageTitle}}</h1>
-    <ul class="list-group">
-      <li class="list-group-item p-3" *ngFor="let user of users">
-        {{ user.name }}
-      </li>
-    </ul>
+    <div class="col-6">
+      <h1 class="mb-5">All Users</h1>
+      <ul class="list-group">
+        <li class="list-group-item p-3" *ngFor="let user of users">
+          <a
+            [routerLink]="['/users', user.id]"
+            [queryParams]="{ page: user.id, search: user.name }"
+            >{{ user.name }}</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-6">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

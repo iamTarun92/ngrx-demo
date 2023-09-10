@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { reducers, metaReducers } from './store/user/reducers';
+import { reducers, metaReducers } from './store/user';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/user/user.effects';
 import { UsersComponent } from './pages/users/users.component';
@@ -30,6 +30,13 @@ import { SubjectComponent } from './component/observable/subject/subject.compone
 import { InputComponent } from './component/observable/subject/input/input.component';
 import { SwitchMapComponent } from './component/observable/switch-map/switch-map.component';
 import { FormsModule } from '@angular/forms';
+import { ReplayComponent } from './component/observable/replay/replay.component';
+import { UserComponent } from './component/user/user.component';
+import { EditUserComponent } from './component/edit-user/edit-user.component';
+import { AuthService } from './guard/auth.service';
+import { AuthGuard } from './guard/auth.guard';
+import { CounterOutputComponent } from './component/counter/counter-output/counter-output.component';
+import { CounterButtonComponent } from './component/counter/counter-button/counter-button.component';
 
 @NgModule({
   declarations: [
@@ -53,19 +60,24 @@ import { FormsModule } from '@angular/forms';
     SubjectComponent,
     InputComponent,
     SwitchMapComponent,
+    ReplayComponent,
+    UserComponent,
+    EditUserComponent,
+    CounterOutputComponent,
+    CounterButtonComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // StoreModule.forRoot({ counter: counterReducer }),
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot({ counter: counterReducer }),
+    // StoreModule.forRoot(reducers, { metaReducers }),
     // StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     // isDevMode() ? StoreDevtoolsModule.instrument() : []
-    EffectsModule.forRoot([UserEffects,]),
+    // EffectsModule.forRoot([UserEffects,]),
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

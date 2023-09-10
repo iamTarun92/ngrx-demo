@@ -1,7 +1,9 @@
-<button (click)="increment()">Increment</button>
-
-<div>Current Count: {{ counter }}</div>
-
-<button (click)="decrement()">Decrement</button>
-
-<button (click)="reset()">Reset Counter</button>
+<div class="container mt-5">
+  <h1>Current Count: {{ counter }}</h1>
+  <app-counter-button
+    (increment)="OnIncrement()"
+    (decrement)="onDecrement()"
+    (reset)="onReset()"
+    class="mt-5"
+  ></app-counter-button>
+</div>

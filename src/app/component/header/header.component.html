@@ -1,12 +1,30 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Observable and Promise</a>
-      <span class="badge bg-primary" *ngIf="exclusive">Exclusive</span>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav ms-auto">
-          <a class="nav-link" routerLink="promise">Promise</a>
-          <a class="nav-link" routerLink="observable">Observable</a>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Observable and Promise</a>
+    <span class="badge bg-primary" *ngIf="exclusive">Exclusive</span>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="promise"
+          routerLinkActive="active"
+          >Promise</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="observable" routerLinkActive="active"
+          >Observable</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="users" routerLinkActive="active"
+          >Users</a
+        >
+      </li>
+      <li class="nav-item">
+        <button (click)="onLoginClick()" *ngIf="!isLogedIn" class="btn">Login</button>
+        <button (click)="onLogoutClick()" *ngIf="isLogedIn" class="btn">Logout</button>
+      </li>
+    </ul>
+  </div>
+</nav>

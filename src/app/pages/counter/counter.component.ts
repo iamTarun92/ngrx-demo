@@ -17,13 +17,13 @@ export class CounterComponent implements OnInit {
       this.counter = data.counter
     })
   }
-  increment() {
+  OnIncrement() {
     this.store.dispatch(increment());
   }
-  decrement() {
+  onDecrement() {
     this.store.dispatch(decrement());
   }
-  reset() {
+  onReset() {
     this.store.dispatch(reset());
   }
 }

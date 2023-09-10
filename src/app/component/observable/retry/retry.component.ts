@@ -16,16 +16,17 @@ export class RetryComponent {
   fetcDetails() {
     this.fatching = true
     this.status = 'Fatching...'
-    this.http.get('https://jsonplaceholder.typicode.com/users/1').pipe(retry(2)).subscribe(
-      (res) => {
+    this.http.get('https://jsonplaceholder.typicode.com/users/1').pipe(retry(2)).subscribe({
+      next: res => {
         this.user = res
         this.fatching = false
         this.status = 'Data Fatched'
       },
-      (err) => {
+      error: err => {
         this.fatching = false
         this.status = 'Found some problem with data fatching.'
       }
+    }
     )
   }
 }

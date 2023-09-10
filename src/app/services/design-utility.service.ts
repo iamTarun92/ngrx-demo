@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { ReplaySubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 export class DesignUtilityService {
   exclusive = new Subject<boolean>()
   username = new Subject<string>()
+  videoEmit = new ReplaySubject<string>(5)
 
   constructor() { }
   appendElement(val: any, ele: any, customClass: string) {

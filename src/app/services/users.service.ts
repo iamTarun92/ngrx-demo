@@ -9,16 +9,14 @@ import { Users } from '../models/user';
 export class UsersService {
 
   constructor(private http: HttpClient) { }
-  getUsers() {
-    return this.http.get('../../../assets/json/users.json')
+  getUsers(): Observable<Users[]> {
+    // return this.http.get<Users[]>('https://jsonplaceholder.typicode.com/users')
+    return this.http.get<Users[]>('../../../assets/json/users.json')
   }
-  // getUsers(): Observable<Users[]> {
-  //   return this.http.get<Users[]>('../../../assets/json/users.json')
-  // }
+  getUserById(id: string): Observable<Users[]> {
+    return this.http.get<Users[]>(`https://jsonplaceholder.typicode.com/users/${id}`)
+  }
   getAllData(searchTerm: string): Observable<Users[]> {
     return this.http.get<Users[]>(`https://jsonplaceholder.typicode.com/users?q=${searchTerm}`)
-  }
-  fn(val: Users): Users {
-    return val
   }
 }

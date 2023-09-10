@@ -1,0 +1,43 @@
+<input type="text" #video />
+<button (click)="addVideo(video.value)">add video</button>
+
+<div class="row mt-5">
+  <div class="col-3">
+    User 01
+    <ul>
+      <li *ngFor="let item of userList1">
+        <strong>Video</strong> - {{ item }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-3">
+    User 02
+    <ul>
+      <li *ngFor="let item of userList2">
+        <strong>Video</strong> - {{ item }}
+      </li>
+    </ul>
+    <button
+      [ngClass]="subscribeMode2 ? 'btn-danger' : 'btn-success'"
+      class="btn"
+      (click)="user2ubscribe()"
+    >
+      {{ subscribeMode2 ? "Unsubscribe" : "subscribe" }}
+    </button>
+  </div>
+  <div class="col-3">
+    User 03
+    <ul>
+      <li *ngFor="let item of userList3">
+        <strong>Video</strong> - {{ item }}
+      </li>
+    </ul>
+    <button
+      [ngClass]="subscribeMode3 ? 'btn-danger' : 'btn-success'"
+      class="btn"
+      (click)="user2ubscribe()"
+    >
+      {{ subscribeMode2 ? "Unsubscribe" : "subscribe" }}
+    </button>
+  </div>
+</div>

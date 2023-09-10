@@ -17,10 +17,21 @@ import { DebounceTimeComponent } from './component/observable/debounce-time/debo
 import { UsersComponent } from './pages/users/users.component';
 import { CounterComponent } from './pages/counter/counter.component';
 import { SwitchMapComponent } from './component/observable/switch-map/switch-map.component';
+import { ReplayComponent } from './component/observable/replay/replay.component';
+import { UserComponent } from './component/user/user.component';
+import { EditUserComponent } from './component/edit-user/edit-user.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   { path: 'promise', component: PromiseComponent },
-  { path: 'user', component: UsersComponent },
+  {
+    path: 'users', component: UsersComponent,
+    // canActivateChild: [AuthGuard],
+    children: [
+      { path: ':id', component: UserComponent },
+      { path: ':id/edit', component: EditUserComponent }
+    ]
+  },
   { path: 'counter', component: CounterComponent },
   {
     path: 'observable', component: ObservableComponent,
@@ -38,6 +49,8 @@ const routes: Routes = [
       { path: 'debounceTime', component: DebounceTimeComponent },
       { path: 'subject', component: SubjectComponent },
       { path: 'switch-map', component: SwitchMapComponent },
+      { path: 'switch-map', component: SwitchMapComponent },
+      { path: 'replay', component: ReplayComponent },
     ]
   },
   { path: '**', redirectTo: 'promise' }
