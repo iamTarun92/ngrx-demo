@@ -17,9 +17,14 @@ const routes: Routes = [
           import('./observable/observable.module').then((m) => m.ObservableModule),
       },
       {
-        path: 'user-list',
+        path: 'users',
         loadChildren: () =>
           import('./user-list/user-list.module').then((m) => m.UserListModule),
+      },
+      {
+        path: 'promise',
+        loadChildren: () =>
+          import('./promise/promise.module').then((m) => m.PromiseModule),
       },
     ]
   }

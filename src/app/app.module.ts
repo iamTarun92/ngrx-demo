@@ -11,7 +11,6 @@ import { UserEffects } from './store/user/user.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { counterReducer } from './store/counter/counter.reducer';
 import { HeaderComponent } from './component/header/header.component';
-import { PromiseComponent } from './pages/promise/promise.component';
 import { ListComponent } from './component/observable/list/list.component';
 import { FormEventComponent } from './component/observable/form-event/form-event.component';
 import { IntervalTimerComponent } from './component/observable/interval-timer/interval-timer.component';
@@ -28,8 +27,6 @@ import { InputComponent } from './component/observable/subject/input/input.compo
 import { SwitchMapComponent } from './component/observable/switch-map/switch-map.component';
 import { FormsModule } from '@angular/forms';
 import { ReplayComponent } from './component/observable/replay/replay.component';
-import { UserComponent } from './component/user/user.component';
-import { EditUserComponent } from './component/edit-user/edit-user.component';
 import { AuthService } from './guard/auth.service';
 import { AuthGuard } from './guard/auth.guard';
 import { SidebarComponent } from './component/sidebar/sidebar.component';
@@ -38,7 +35,6 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    PromiseComponent,
     ListComponent,
     FormEventComponent,
     IntervalTimerComponent,
@@ -54,8 +50,6 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
     InputComponent,
     SwitchMapComponent,
     ReplayComponent,
-    UserComponent,
-    EditUserComponent,
     SidebarComponent,
   ],
   imports: [

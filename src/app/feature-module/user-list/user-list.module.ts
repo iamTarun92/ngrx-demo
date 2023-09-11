@@ -3,15 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { UserListRoutingModule } from './user-list-routing.module';
 import { UserListComponent } from './user-list.component';
+import { UserComponent } from './user/user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    UserListComponent
+    UserListComponent, UserComponent, EditUserComponent
   ],
   imports: [
     CommonModule,
-    UserListRoutingModule
+    UserListRoutingModule,
+    FormsModule
   ]
 })
 export class UserListModule { }

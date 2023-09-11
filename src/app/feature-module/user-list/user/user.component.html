@@ -1,0 +1,10 @@
+<div *ngIf="user">
+  <h1 class="mb-5">User details</h1>
+  <h4>Name: {{ user.name }}</h4>
+  <h4>Phone: {{ user.phone }}</h4>
+  <h4>Website: {{ user.website }}</h4>
+
+  <a [routerLink]="['/users', user.id, 'edit']" queryParamsHandling="preserve"
+    >Edit</a
+  >
+</div>
