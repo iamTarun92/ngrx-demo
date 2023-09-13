@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { customInput } from 'src/app/store/counter/counter.actions';
 import { counterState } from 'src/app/models/user';
+import { getChannelName } from 'src/app/store/counter/counter.selectors';
 
 @Component({
   selector: 'app-custom-counter-input',
@@ -13,8 +14,8 @@ import { counterState } from 'src/app/models/user';
   styleUrls: ['./custom-counter-input.component.scss']
 })
 export class CustomCounterInputComponent {
-  constructor(private store: Store<{ counter: counterState }>) { }
   value = ''
+  constructor(private store: Store) { }
   onAdd() {
     this.store.dispatch(customInput({ num: +this.value }))
   }

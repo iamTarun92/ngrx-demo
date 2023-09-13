@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { increment, decrement, reset } from 'src/app/store/counter/counter.actions';
 import { Observable } from 'rxjs';
 import { counterState } from 'src/app/models/user';
+import { getCounter } from 'src/app/store/counter/counter.selectors';
 
 
 @Component({
@@ -12,10 +13,10 @@ import { counterState } from 'src/app/models/user';
 })
 export class CounterComponent implements OnInit {
   counter: any
-  counter$: Observable<{ counter: number }>
+  counter$: Observable<number>
 
-  constructor(private store: Store<{ counter: counterState }>) {
-    this.counter$ = store.select('counter');
+  constructor(private store: Store) {
+    this.counter$ = store.select(getCounter);
   }
 
   ngOnInit(): void {
