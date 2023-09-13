@@ -27,3 +27,7 @@ export interface Geo {
     lat: string;
     lng: string;
 }
+export interface counterState {
+    counter: number;
+}
+
