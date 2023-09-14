@@ -29,6 +29,7 @@ export interface Geo {
 }
 export interface counterState {
     counter: number;
-    channelName: string
+    channelName: string;
+    data:any[]
 }
 

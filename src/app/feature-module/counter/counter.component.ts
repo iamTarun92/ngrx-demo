@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { increment, decrement, reset } from 'src/app/store/counter/counter.actions';
 import { Observable } from 'rxjs';
 import { counterState } from 'src/app/models/user';
@@ -15,14 +15,14 @@ export class CounterComponent implements OnInit {
   counter: any
   counter$: Observable<number>
 
-  constructor(private store: Store) {
+  constructor(private store: Store<{ counter: counterState }>) {
     this.counter$ = store.select(getCounter);
   }
 
   ngOnInit(): void {
-    // this.store.select('counter').subscribe((data: any) => {
-    //   this.counter = data.counter
-    // })
+    this.store.pipe(select(state => state['counter'].counter)).subscribe(counter => {
+      this.counter = counter
+    })
   }
   OnIncrement() {
     this.store.dispatch(increment());
