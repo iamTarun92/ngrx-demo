@@ -5,19 +5,17 @@ import { PostsComponent } from './posts.component';
 const routes: Routes = [
   {
     path: '', component: PostsComponent,
-    children: [
-      {
-        path: 'add',
-        loadChildren: () =>
-          import('./add-post/add-post.module').then((m) => m.AddPostModule),
-      },
-      {
-        path: 'edit/:id',
-        loadChildren: () =>
-          import('./edit-post/edit-post.module').then((m) => m.EditPostModule),
-      },
-    ]
-  }
+  },
+  {
+    path: 'add',
+    loadChildren: () =>
+      import('./add-post/add-post.module').then((m) => m.AddPostModule),
+  },
+  {
+    path: 'edit/:id',
+    loadChildren: () =>
+      import('./edit-post/edit-post.module').then((m) => m.EditPostModule),
+  },
 ];
 
 @NgModule({

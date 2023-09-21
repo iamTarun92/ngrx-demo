@@ -13,12 +13,12 @@ import { AppState } from 'src/app/store/app.state';
   styleUrls: ['./counter.component.scss']
 })
 export class CounterComponent implements OnInit, OnDestroy {
-  counter: any
-  counter$: Observable<number> | undefined
+  counter: number | undefined
+  counter$: Observable<any> | undefined
   counterSubscription: Subscription | undefined
 
   constructor(private store: Store<AppState>) {
-    this.counter$ = store.select(getCounter);
+    this.counter$ = store.select('counter');
   }
 
   ngOnInit(): void {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
 import { addPost } from 'src/app/store/posts/posts.actions';
@@ -13,7 +14,7 @@ import { Post } from 'src/app/store/posts/posts.state';
 export class AddPostComponent {
   postForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private store: Store<AppState>) { }
+  constructor(private fb: FormBuilder, private store: Store<AppState>, private router: Router) { }
 
   ngOnInit() {
     this.postForm = this.fb.group({
@@ -23,9 +24,10 @@ export class AddPostComponent {
   }
 
   onSubmit() {
-    const setPost: Post = this.postForm.value
-    this.store.dispatch(addPost({ setPost }))
+    const post: Post = this.postForm.value
+    this.store.dispatch(addPost({ post }))
     this.postForm.reset()
+    this.router.navigate(['posts'])
   }
 
   showTitleErrors() {
