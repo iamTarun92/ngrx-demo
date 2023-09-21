@@ -9,7 +9,6 @@ import { reducers, metaReducers } from './store/user';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/user/user.effects';
 import { HttpClientModule } from '@angular/common/http';
-import { counterReducer } from './store/counter/counter.reducer';
 import { HeaderComponent } from './component/header/header.component';
 import { ListComponent } from './component/observable/list/list.component';
 import { FormEventComponent } from './component/observable/form-event/form-event.component';
@@ -25,11 +24,12 @@ import { DebounceTimeComponent } from './component/observable/debounce-time/debo
 import { SubjectComponent } from './component/observable/subject/subject.component';
 import { InputComponent } from './component/observable/subject/input/input.component';
 import { SwitchMapComponent } from './component/observable/switch-map/switch-map.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReplayComponent } from './component/observable/replay/replay.component';
 import { AuthService } from './guard/auth.service';
 import { AuthGuard } from './guard/auth.guard';
 import { SidebarComponent } from './component/sidebar/sidebar.component';
+import { appReducer } from './store/app.state';
 
 @NgModule({
   declarations: [
@@ -55,13 +55,14 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ counter: counterReducer }),
+    StoreModule.forRoot(appReducer),
     // StoreModule.forRoot(reducers, { metaReducers }),
-    // StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    StoreDevtoolsModule.instrument({  logOnly: !isDevMode() }),
     // isDevMode() ? StoreDevtoolsModule.instrument() : []
     // EffectsModule.forRoot([UserEffects,]),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

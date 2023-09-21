@@ -26,6 +26,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./promise/promise.module').then((m) => m.PromiseModule),
       },
+      {
+        path: 'posts',
+        loadChildren: () =>
+          import('./posts/posts.module').then((m) => m.PostsModule),
+      },
     ]
   }
 ];

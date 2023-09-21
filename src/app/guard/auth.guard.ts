@@ -8,30 +8,30 @@ import { EditUserComponent } from '../feature-module/user-list/edit-user/edit-us
   providedIn: 'root'
 })
 export class AuthGuard {
-  constructor(private service: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router) {
   }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let isLogedIn = this.service.isLogedIn
+    let isLogedIn = this.authService.isLogedIn
     if (isLogedIn) {
-
       return true
     } else {
       alert("You don't have permission to view this page. Please connect with admin.")
-      return this.router.navigate(['/'])
+      return this.router.navigate(['/users'])
     }
   }
   canActivateChild(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let isLogedIn = this.service.isLogedIn
     return this.canActivate(route, state)
   }
-  canDeactivate(component: EditUserComponent,
+  canDeactivate(
+    component: EditUserComponent,
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
-    nextState: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    nextState: RouterStateSnapshot
+    ): Observable<boolean> | Promise<boolean> | boolean {
     return component.canExit();
 
   }

@@ -22,6 +22,10 @@ export class EditUserComponent {
         });
     })
   }
+  check() {
+    console.log(this.editUserDetails.name !== this.user.name);
+
+  }
   canExit(): boolean {
     if (this.editUserDetails.name !== this.user.name) {
       if (confirm("Do you wish to Please confirm")) {

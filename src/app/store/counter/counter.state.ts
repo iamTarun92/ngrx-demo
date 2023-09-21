@@ -1,6 +1,8 @@
-import { counterState } from "src/app/models/user";
-
-
+export interface counterState {
+    counter: number;
+    channelName: string;
+    data: any[]
+}
 export const initialState: counterState = {
     counter: 0,
     channelName: 'tarun',
