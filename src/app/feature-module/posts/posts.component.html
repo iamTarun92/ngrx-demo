@@ -8,6 +8,7 @@
       <th>Id</th>
       <th>Title</th>
       <th>Description</th>
+      <td>Actions</td>
     </tr>
   </thead>
   <tbody>
@@ -16,7 +17,12 @@
       <td>{{ post.title }}</td>
       <td>{{ post.content }}</td>
       <td>
-        <a [routerLink]="['edit', post.id]" class="btn btn-primary">Edit</a>
+        <div class="d-flex gap-2">
+          <a [routerLink]="['edit', post.id]" class="btn btn-primary">Edit</a>
+          <button class="btn btn-danger" (click)="onDeletePost(post.id)">
+            Delete
+          </button>
+        </div>
       </td>
     </tr>
   </tbody>

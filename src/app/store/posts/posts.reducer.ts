@@ -7,14 +7,24 @@ export const postsReducer = createReducer(
     initialState,
     on(postActions.addPost, (state, action) => {
         let post = { ...action.post }
-        post.id = state.posts.length + 1
+        post.id = (state.posts.length + 1).toString()
         return {
+            ...state,
             posts: [...state.posts, post]
         }
     }),
     on(postActions.editPost, (state, action) => {
         const updatedPost = state.posts.map(post => {
             return action.post.id === post.id ? action.post : post
+        })
+        return {
+            ...state,
+            posts: updatedPost
+        }
+    }),
+    on(postActions.deletePost, (state, { id }) => {
+        const updatedPost = state.posts.filter(post => {
+            return post.id !== id
         })
         return {
             ...state,

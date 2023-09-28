@@ -24,7 +24,10 @@ export class AddPostComponent {
   }
 
   onSubmit() {
-    const post: Post = this.postForm.value
+    const post: Post = {
+      title: this.postForm.value.title,
+      content: this.postForm.value.content
+    }
     this.store.dispatch(addPost({ post }))
     this.postForm.reset()
     this.router.navigate(['posts'])

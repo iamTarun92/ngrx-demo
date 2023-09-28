@@ -1,5 +1,7 @@
 <div class="container mt-5">
-  <h1>Current Count: {{ (counter$ | async).channelName }}</h1>
+  <h1>Current Count: {{ counter }}</h1>
+  <h1>Current Count: {{ (counter$ | async).counter }}</h1>
+  <h1>Current Count: {{ counter1$ | async }}</h1>
   <button (click)="OnIncrement()" class="btn btn">Increment</button>
   <button (click)="onDecrement()" class="btn btn">Decrement</button>
   <button (click)="onReset()" class="btn btn">Reset</button>

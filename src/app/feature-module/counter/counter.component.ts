@@ -15,10 +15,12 @@ import { AppState } from 'src/app/store/app.state';
 export class CounterComponent implements OnInit, OnDestroy {
   counter: number | undefined
   counter$: Observable<any> | undefined
+  counter1$: Observable<any> | undefined
   counterSubscription: Subscription | undefined
 
   constructor(private store: Store<AppState>) {
     this.counter$ = store.select('counter');
+    this.counter1$ = store.select(getCounter);
   }
 
   ngOnInit(): void {
