@@ -5,9 +5,16 @@ import * as postActions from './posts.actions';
 
 export const postsReducer = createReducer(
     initialState,
-    on(postActions.addPost, (state, action) => {
+    // on(postActions.addPost, (state, action) => {
+    //     let post = { ...action.post }
+    //     post.id = state.posts.length + 1
+    //     return {
+    //         ...state,
+    //         posts: [...state.posts, post]
+    //     }
+    // }),
+    on(postActions.addPostSuccess, (state, action) => {
         let post = { ...action.post }
-        post.id = (state.posts.length + 1).toString()
         return {
             ...state,
             posts: [...state.posts, post]
@@ -29,6 +36,12 @@ export const postsReducer = createReducer(
         return {
             ...state,
             posts: updatedPost
+        }
+    }),
+    on(postActions.loadPostsSuccess, (state, action) => {
+        return {
+            ...state,
+            posts: action.posts
         }
     }),
 );

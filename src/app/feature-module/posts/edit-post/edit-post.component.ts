@@ -42,7 +42,7 @@ export class EditPostComponent implements OnInit, OnDestroy {
   setform() {
     this.editForm = this.fb.group({
       title: [this.post?.title, [Validators.required, Validators.minLength(5)]],
-      content: [this.post?.content, [Validators.required, Validators.minLength(10)]],
+      body: [this.post?.body, [Validators.required, Validators.minLength(10)]],
     });
   }
   showTitleErrors() {
@@ -75,11 +75,11 @@ export class EditPostComponent implements OnInit, OnDestroy {
       return
     }
     const title = this.editForm.value.title
-    const content = this.editForm.value.content
+    const body = this.editForm.value.body
     const post: Post = {
       id: this.post?.id,
       title,
-      content
+      body
     }
     this.store.dispatch(editPost({ post }))
     this.editForm.reset()

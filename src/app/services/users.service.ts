@@ -10,8 +10,7 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
   getUsers(): Observable<Users[]> {
-    // return this.http.get<Users[]>('https://jsonplaceholder.typicode.com/users')
-    return this.http.get<Users[]>('../../../assets/json/users.json')
+    return this.http.get<Users[]>('https://jsonplaceholder.typicode.com/users')
   }
   getUserById(id: string): Observable<Users[]> {
     return this.http.get<Users[]>(`https://jsonplaceholder.typicode.com/users/${id}`)

@@ -55,11 +55,11 @@ import { appReducer } from './store/app.state';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot(appReducer),
+    StoreModule.forRoot({}),
     // StoreModule.forRoot(reducers, { metaReducers }),
-    StoreDevtoolsModule.instrument({  logOnly: !isDevMode() }),
+    StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
     // isDevMode() ? StoreDevtoolsModule.instrument() : []
-    // EffectsModule.forRoot([UserEffects,]),
+    EffectsModule.forRoot([]),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule

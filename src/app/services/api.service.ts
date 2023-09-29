@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { Observable, map } from 'rxjs';
-import { Users } from '../models/user';
+import { Post } from '../store/posts/posts.state';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -9,9 +10,12 @@ import { Users } from '../models/user';
 })
 export class ApiService {
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private http: HttpClient) { }
 
-  getAllPost(): Observable<Users[]> {
-    return this.httpService.get('users').pipe(map(data => data as Users[]))
+  getAllPost(): Observable<Post[]> {
+    return this.httpService.get('posts')
+  }
+  addPost(post: Post) {
+    return this.http.post('https://jsonplaceholder.typicode.com/posts', post)
   }
 }

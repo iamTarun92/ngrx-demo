@@ -19,14 +19,14 @@ export class AddPostComponent {
   ngOnInit() {
     this.postForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(5)]],
-      content: ['', [Validators.required, Validators.minLength(10)]],
+      body: ['', [Validators.required, Validators.minLength(10)]],
     });
   }
 
   onSubmit() {
     const post: Post = {
       title: this.postForm.value.title,
-      content: this.postForm.value.content
+      body: this.postForm.value.body
     }
     this.store.dispatch(addPost({ post }))
     this.postForm.reset()

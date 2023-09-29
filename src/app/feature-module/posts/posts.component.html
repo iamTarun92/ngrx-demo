@@ -15,7 +15,7 @@
     <tr *ngFor="let post of posts$ | async">
       <th>{{ post.id }}</th>
       <td>{{ post.title }}</td>
-      <td>{{ post.content }}</td>
+      <td>{{ post.body }}</td>
       <td>
         <div class="d-flex gap-2">
           <a [routerLink]="['edit', post.id]" class="btn btn-primary">Edit</a>
