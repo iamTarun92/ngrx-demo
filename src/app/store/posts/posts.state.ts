@@ -1,12 +1,5 @@
-export interface Post {
-    id?: number;
-    userId?: number;
-    title: string;
-    body: string;
-}
-export interface PostsState {
-    posts: Post[]
-}
+import { PostsState } from "src/app/models/common";
+
 export const initialState: PostsState = {
     posts: []
 }

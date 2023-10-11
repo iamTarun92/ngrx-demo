@@ -1,6 +1,10 @@
 <div class="container">
   <h2>Add Post</h2>
-  <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="d-flex flex-column row-gap-4">
+  <form
+    [formGroup]="postForm"
+    (ngSubmit)="onSubmit()"
+    class="d-flex flex-column row-gap-4"
+  >
     <div class="form-group">
       <label for="title">Title</label>
       <input
@@ -9,7 +13,7 @@
         class="form-control"
         formControlName="title"
       />
-      <div class="text-danger">{{ showTitleErrors() }}</div>
+      <div class="text-danger">{{ showFormInputErrors("title") }}</div>
     </div>
     <div class="form-group">
       <label for="content">Content</label>
@@ -18,7 +22,7 @@
         class="form-control"
         formControlName="body"
       ></textarea>
-      <div class="text-danger">{{ showContentErrors() }}</div>
+      <div class="text-danger">{{ showFormInputErrors("body") }}</div>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="postForm.invalid">
       Add Post

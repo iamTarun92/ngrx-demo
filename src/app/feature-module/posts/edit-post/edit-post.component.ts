@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { Post } from 'src/app/models/common';
 import { AppState } from 'src/app/store/app.state';
 import { editPost } from 'src/app/store/posts/posts.actions';
 import { getPostById } from 'src/app/store/posts/posts.selectors';
-import { Post } from 'src/app/store/posts/posts.state';
 
 @Component({
   selector: 'app-edit-post',
@@ -42,29 +42,17 @@ export class EditPostComponent implements OnInit, OnDestroy {
   setform() {
     this.editForm = this.fb.group({
       title: [this.post?.title, [Validators.required, Validators.minLength(5)]],
-      body: [this.post?.body, [Validators.required, Validators.minLength(10)]],
+      body: [this.post?.body, [Validators.required, Validators.minLength(5)]],
     });
   }
-  showTitleErrors() {
-    const formElement = this.editForm.get('title')
+   showFormInputErrors(ele: string) {
+    const formElement = this.editForm.get(ele)
     if (formElement?.invalid && formElement.touched) {
       if (formElement?.errors?.['required']) {
-        return 'Title is required.'
+        return `${ele} is required.`
       }
       if (formElement.hasError('minlength')) {
-        return 'Title should be of minimum 5 char length.'
-      }
-    }
-    return ''
-  }
-  showContentErrors() {
-    const formElement = this.editForm.get('content')
-    if (formElement?.invalid && formElement.touched) {
-      if (formElement?.errors?.['required']) {
-        return 'Content is required.'
-      }
-      if (formElement.hasError('minlength')) {
-        return 'Content should be of minimum 10 char length.'
+        return `${ele} should be of minimum 5 char length.`
       }
     }
     return ''
@@ -78,6 +66,7 @@ export class EditPostComponent implements OnInit, OnDestroy {
     const body = this.editForm.value.body
     const post: Post = {
       id: this.post?.id,
+      userId: this.post?.id,
       title,
       body
     }

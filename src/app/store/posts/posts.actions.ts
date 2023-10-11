@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Post } from './posts.state';
+import { Post } from 'src/app/models/common';
 
 
 export const LOAD_POSTS = 'load posts'

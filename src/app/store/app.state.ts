@@ -1,10 +1,8 @@
+import { PostsState, CounterState } from "../models/common";
 import { counterReducer } from "./counter/counter.reducer";
-import { counterState } from "./counter/counter.state";
 import { postsReducer } from "./posts/posts.reducer";
-import { PostsState } from "./posts/posts.state";
-
 export interface AppState {
-    counter: counterState;
+    counter: CounterState;
     posts: PostsState
 }
 

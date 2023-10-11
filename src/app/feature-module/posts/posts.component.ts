@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
-import { Post } from 'src/app/store/posts/posts.state';
 import { Observable } from 'rxjs';
 import { getPosts } from 'src/app/store/posts/posts.selectors';
 import { deletePost, loadPosts } from 'src/app/store/posts/posts.actions';
+import { Post } from 'src/app/models/common';
 
 @Component({
   selector: 'app-posts',
@@ -16,8 +16,8 @@ export class PostsComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.posts$ = this.store.select(getPosts)
     this.store.dispatch(loadPosts())
+    this.posts$ = this.store.select(getPosts)
   }
 
   onDeletePost(id: any) {

@@ -29,7 +29,6 @@ import { ReplayComponent } from './component/observable/replay/replay.component'
 import { AuthService } from './guard/auth.service';
 import { AuthGuard } from './guard/auth.guard';
 import { SidebarComponent } from './component/sidebar/sidebar.component';
-import { appReducer } from './store/app.state';
 
 @NgModule({
   declarations: [

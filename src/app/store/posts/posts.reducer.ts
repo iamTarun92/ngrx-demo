@@ -8,6 +8,7 @@ export const postsReducer = createReducer(
     // on(postActions.addPost, (state, action) => {
     //     let post = { ...action.post }
     //     post.id = state.posts.length + 1
+    //     post.userId = state.posts.length + 1
     //     return {
     //         ...state,
     //         posts: [...state.posts, post]
@@ -15,6 +16,7 @@ export const postsReducer = createReducer(
     // }),
     on(postActions.addPostSuccess, (state, action) => {
         let post = { ...action.post }
+        post.userId = state.posts.length + 1        
         return {
             ...state,
             posts: [...state.posts, post]

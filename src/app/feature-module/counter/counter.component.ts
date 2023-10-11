@@ -3,7 +3,6 @@ import { Store, select } from '@ngrx/store';
 import { increment, decrement, reset } from 'src/app/store/counter/counter.actions';
 import { Observable, Subscription } from 'rxjs';
 import { getCounter } from 'src/app/store/counter/counter.selectors';
-import { counterState } from 'src/app/store/counter/counter.state';
 import { AppState } from 'src/app/store/app.state';
 
 

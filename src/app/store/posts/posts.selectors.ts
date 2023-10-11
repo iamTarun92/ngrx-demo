@@ -1,5 +1,6 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { Post, PostsState } from './posts.state';
+
+import { Post, PostsState } from 'src/app/models/common';
 
 export const getPostsState = createFeatureSelector<PostsState>('posts');
 

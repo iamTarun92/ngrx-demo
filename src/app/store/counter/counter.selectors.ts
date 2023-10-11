@@ -1,15 +1,15 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { counterState } from './counter.state';
+import { CounterState } from 'src/app/models/common';
 
-export const getCounterState = createFeatureSelector<counterState>('counter');
+export const getCounterState = createFeatureSelector<CounterState>('counter');
 
 export const getCounter = createSelector(
     getCounterState,
-    (state: counterState) => state.counter
+    (state: CounterState) => state.counter
 );
 export const getChannelName = createSelector(
     getCounterState,
-    (state: counterState) => state.channelName
+    (state: CounterState) => state.channelName
 );
 
 export const getData = createSelector(
