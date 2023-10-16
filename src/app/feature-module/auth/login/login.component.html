@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Login</h2>
+
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+    class="d-flex flex-column row-gap-4"
+  >
+    <div class="form-group">
+      <label for="title">Email</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        formControlName="email"
+      />
+    </div>
+    <div class="form-group">
+      <label for="content">Password</label>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        formControlName="password"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
+      Add Post
+    </button>
+  </form>
+</div>

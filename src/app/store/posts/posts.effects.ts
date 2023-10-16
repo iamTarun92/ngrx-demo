@@ -1,22 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
-import { map, exhaustMap, catchError, mergeMap } from 'rxjs/operators';
+import { map, exhaustMap, catchError, mergeMap, withLatestFrom } from 'rxjs/operators';
 import { ApiService } from 'src/app/services/api.service';
 import { addPost, addPostSuccess, loadPosts, loadPostsSuccess } from './posts.actions';
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.state';
+import { getPosts } from './posts.selectors';
 
 @Injectable()
 export class PostsEffects {
 
     loadPosts$ = createEffect(() => this.actions$.pipe(
         ofType(loadPosts),
-        exhaustMap(() => this.postService.getAllPost()
-            .pipe(
-                map(posts => {
-                    return loadPostsSuccess({ posts })
-                }),
-                catchError(() => EMPTY)
-            ))
+        withLatestFrom(this.store.select(getPosts)),
+        exhaustMap(([action, data]) => {
+            if (!data.length) {
+                return this.postService.getAllPost()
+                    .pipe(
+                        map(posts => {
+                            return loadPostsSuccess({ posts })
+                        }),
+                        catchError(() => EMPTY)
+                    )
+            }
+            return EMPTY
+        })
     )
     );
     addPost$ = createEffect(() => this.actions$.pipe(
@@ -33,6 +42,7 @@ export class PostsEffects {
 
     constructor(
         private actions$: Actions,
-        private postService: ApiService
+        private postService: ApiService,
+        private store: Store<AppState>
     ) { }
 }

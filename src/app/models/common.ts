@@ -1,7 +1,6 @@
 export interface CounterState {
     counter: number;
     channelName: string;
-    data: any[]
 }
 export interface Post {
     id?: number;
