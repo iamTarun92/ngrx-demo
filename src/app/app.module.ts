@@ -29,6 +29,11 @@ import { ReplayComponent } from './component/observable/replay/replay.component'
 import { AuthService } from './guard/auth.service';
 import { AuthGuard } from './guard/auth.guard';
 import { SidebarComponent } from './component/sidebar/sidebar.component';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { appReducer } from './store/app.state';
+import { CustomSerializer } from './store/router/custom-route-serializer';
+import { PdfShowComponent } from './component/pdf-show/pdf-show.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -50,20 +55,27 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
     SwitchMapComponent,
     ReplayComponent,
     SidebarComponent,
+    PdfShowComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}),
-    // StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(appReducer),
+    StoreRouterConnectingModule.forRoot({ serializer: CustomSerializer }),
     StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
-    // isDevMode() ? StoreDevtoolsModule.instrument() : []
     EffectsModule.forRoot([]),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
+    // StoreModule.forRoot(reducers, { metaReducers }),
+    // isDevMode() ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    console.log(environment.production);
+
+  }
+}

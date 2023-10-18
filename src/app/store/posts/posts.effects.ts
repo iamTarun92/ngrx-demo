@@ -33,6 +33,8 @@ export class PostsEffects {
         mergeMap((action) => this.postService.addPost(action.post)
             .pipe(
                 map(post => {
+                    console.log(post);
+
                     return addPostSuccess({ post })
                 }),
                 catchError(() => EMPTY)

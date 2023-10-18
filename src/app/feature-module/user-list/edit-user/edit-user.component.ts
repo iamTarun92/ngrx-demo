@@ -23,7 +23,7 @@ export class EditUserComponent {
     })
   }
   check() {
-    console.log(this.editUserDetails.name !== this.user.name);
+    // console.log(this.editUserDetails.name !== this.user.name);
 
   }
   canExit(): boolean {

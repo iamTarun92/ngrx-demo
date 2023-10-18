@@ -16,7 +16,6 @@ export class PostsComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.store.dispatch(loadPosts())
     this.posts$ = this.store.select(getPosts)
   }
 

@@ -24,12 +24,9 @@ export class EditPostComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.postSubscription = this.activeRoute.paramMap.subscribe(params => {
-      const id = params.get('id')
-      this.store.select(getPostById, { id }).subscribe(data => {
-        this.post = data;
-        this.setform()
-      })
+    this.postSubscription = this.store.select(getPostById).subscribe(data => {
+      this.post = data;
+      this.setform()
     })
   }
 
@@ -45,7 +42,7 @@ export class EditPostComponent implements OnInit, OnDestroy {
       body: [this.post?.body, [Validators.required, Validators.minLength(5)]],
     });
   }
-   showFormInputErrors(ele: string) {
+  showFormInputErrors(ele: string) {
     const formElement = this.editForm.get(ele)
     if (formElement?.invalid && formElement.touched) {
       if (formElement?.errors?.['required']) {

@@ -8,7 +8,7 @@
   />
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3 btn" routerLink="auth/login" *ngIf="!isLogedIn"
+      <a class="nav-link px-3 btn" (click)="onLoginClick()" *ngIf="!isLogedIn"
         >Login</a
       >
       <a
