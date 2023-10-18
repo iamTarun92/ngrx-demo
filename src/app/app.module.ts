@@ -33,7 +33,6 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { appReducer } from './store/app.state';
 import { CustomSerializer } from './store/router/custom-route-serializer';
 import { PdfShowComponent } from './component/pdf-show/pdf-show.component';
-import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -73,9 +72,4 @@ import { environment } from 'src/environments/environment';
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor() {
-    console.log(environment.production);
-
-  }
-}
+export class AppModule { }
