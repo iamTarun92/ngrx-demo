@@ -60,9 +60,9 @@ import { PdfShowComponent } from './component/pdf-show/pdf-show.component';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(appReducer),
-    StoreRouterConnectingModule.forRoot({ serializer: CustomSerializer }),
     StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot({ serializer: CustomSerializer }),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule

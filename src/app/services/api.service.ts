@@ -13,7 +13,7 @@ export class ApiService {
   constructor(private httpService: HttpService, private http: HttpClient) { }
 
   getAllPost(): Observable<any> {
-    return this.http.get('https://jsonplaceholder.typicode.com/postsss', { observe: "response" })
+    return this.http.get('https://jsonplaceholder.typicode.com/posts', { observe: "response" })
   }
   addPost(post: Post) {
     return this.http.post('https://jsonplaceholder.typicode.com/posts', post)

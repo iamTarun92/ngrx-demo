@@ -19,11 +19,9 @@ export class PostsEffects {
                 return this.postService.getAllPost()
                     .pipe(
                         map(response => {
-                            alert(response.status);
                             return loadPostsSuccess({ posts: response.body })
                         }),
                         catchError((error) => {
-                            alert(error.status)
                             return of(loadPostsFailure({ error }))
                         })
                     )
