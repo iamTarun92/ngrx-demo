@@ -13,5 +13,6 @@ export interface Post {
     body: string;
 }
 export interface PostsState {
-    posts: Post[]
+    posts: Post[];
+    error: any
 }

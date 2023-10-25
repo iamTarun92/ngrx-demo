@@ -47,4 +47,6 @@ export const postsReducer = createReducer(
             posts
         }
     }),
+    on(postActions.loadPostsFailure, (state, { error }) => ({ ...state, error }))
+
 );

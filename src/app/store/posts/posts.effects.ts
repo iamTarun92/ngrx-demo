@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY } from 'rxjs';
+import { EMPTY, of } from 'rxjs';
 import { map, exhaustMap, catchError, mergeMap, withLatestFrom } from 'rxjs/operators';
 import { ApiService } from 'src/app/services/api.service';
-import { addPost, addPostSuccess, loadPosts, loadPostsSuccess } from './posts.actions';
+import { addPost, addPostSuccess, loadPosts, loadPostsFailure, loadPostsSuccess } from './posts.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
 import { getPosts } from './posts.selectors';
@@ -18,10 +18,14 @@ export class PostsEffects {
             if (!data.length) {
                 return this.postService.getAllPost()
                     .pipe(
-                        map(posts => {
-                            return loadPostsSuccess({ posts })
+                        map(response => {
+                            alert(response.status);
+                            return loadPostsSuccess({ posts: response.body })
                         }),
-                        catchError(() => EMPTY)
+                        catchError((error) => {
+                            alert(error.status)
+                            return of(loadPostsFailure({ error }))
+                        })
                     )
             }
             return EMPTY
