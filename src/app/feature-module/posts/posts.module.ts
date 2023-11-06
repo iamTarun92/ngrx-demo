@@ -26,6 +26,6 @@ import { loadPosts } from 'src/app/store/posts/posts.actions';
 })
 export class PostsModule {
   constructor(private store: Store<AppState>) {
-    this.store.dispatch(loadPosts())
+    // this.store.dispatch(loadPosts())
   }
 }

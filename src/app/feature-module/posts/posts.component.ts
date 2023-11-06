@@ -13,8 +13,9 @@ import { Post } from 'src/app/models/common';
 })
 export class PostsComponent implements OnInit {
   posts$: Observable<Post[]> | undefined
-  constructor(private store: Store<AppState>) { }
-
+  constructor(private store: Store<AppState>) {
+    this.store.dispatch(loadPosts())
+  }
   ngOnInit(): void {
     this.posts$ = this.store.select(getPosts)
   }
