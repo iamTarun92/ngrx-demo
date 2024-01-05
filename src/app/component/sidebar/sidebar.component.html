@@ -10,27 +10,27 @@
           >Home</a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="authService.checkPermission('promise','View')">
         <a class="nav-link" routerLink="promise" routerLinkActive="active"
           >Promise</a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="authService.checkPermission('observable','View')">
         <a class="nav-link" routerLink="observable" routerLinkActive="active"
           >Observable</a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="authService.checkPermission('users','View')">
         <a class="nav-link" routerLink="users" routerLinkActive="active"
           >Users</a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="authService.checkPermission('counter','View')">
         <a class="nav-link" routerLink="counter" routerLinkActive="active"
           >Counter</a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="authService.checkPermission('posts','View')">
         <a class="nav-link" routerLink="posts" routerLinkActive="active"
           >Posts</a
         >

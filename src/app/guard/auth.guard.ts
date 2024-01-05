@@ -3,22 +3,26 @@ import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@a
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { EditUserComponent } from '../feature-module/user-list/edit-user/edit-user.component';
+import { ApiService } from '../services/api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard {
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private apiService: ApiService) {
   }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let isLogedIn = this.authService.isLogedIn
-    if (isLogedIn) {
+    let isLogedIn = sessionStorage.getItem('isLogin')
+    const moduleData = route.data['module'];
+    const actionData = route.data['action'];
+    
+    if (isLogedIn && this.authService.checkPermission(moduleData, actionData)) {
       return true
     } else {
-      alert("You don't have permission to view this page. Please connect with admin.")
-      return this.router.navigate(['/users'])
+      alert("Please connect with admin.")
+      return this.router.navigate(['/'])
     }
   }
   canActivateChild(
@@ -31,9 +35,8 @@ export class AuthGuard {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
     nextState: RouterStateSnapshot
-    ): Observable<boolean> | Promise<boolean> | boolean {
+  ): Observable<boolean> | Promise<boolean> | boolean {
     return component.canExit();
-
   }
 
 }

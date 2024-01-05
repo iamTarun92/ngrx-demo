@@ -8,6 +8,7 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit {
+  // EX - 01
   dataArray = [
     {
       "id": 1,
@@ -20,28 +21,10 @@ export class FilterComponent implements OnInit {
       "name": "Johnny",
       "email": "johnny@example.com",
       "gender": "Male"
-    },
-    {
-      "id": 3,
-      "name": "Robert",
-      "email": "robert@example.com",
-      "gender": "Male"
-    },
-    {
-      "id": 4,
-      "name": "Sharonda",
-      "email": "sharon@example.com",
-      "gender": "Female"
-    },
-    {
-      "id": 5,
-      "name": "Pricilla",
-      "email": "pricilla@example.com",
-      "gender": "Female"
     }
   ]
-  filterdata1: any
-  filterdata2: any
+  filterData1: any
+  filterData2: any
   constructor(private userData: UsersService) {
     // userData.getUsers().subscribe(res => {
     //   this.dataArray = res
@@ -50,8 +33,8 @@ export class FilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    from(this.dataArray).pipe(filter(data => data?.name?.length < 7), toArray()).subscribe(res => this.filterdata1 = res)
-    from(this.dataArray).pipe(filter(data => data.gender === 'Male'), toArray()).subscribe(res => this.filterdata2 = res)
+    from(this.dataArray).pipe(filter(data => data?.name?.length < 7), toArray()).subscribe(res => this.filterData1 = res)
+    from(this.dataArray).pipe(filter(data => data.gender === 'Male'), toArray()).subscribe(res => this.filterData2 = res)
   }
 
 }

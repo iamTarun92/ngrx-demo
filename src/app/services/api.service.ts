@@ -18,4 +18,15 @@ export class ApiService {
   addPost(post: Post) {
     return this.http.post('https://jsonplaceholder.typicode.com/posts', post)
   }
+
+  apiurl = 'http://localhost:3000/users';
+  getAll() {
+    return this.http.get(this.apiurl)
+  }
+  getJsonData() {
+    return this.http.get('assets/json/role.json')
+  }
+  isLoggedIn() {
+    return sessionStorage.getItem('isLogin')
+  }
 }

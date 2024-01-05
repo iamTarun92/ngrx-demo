@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,8 @@ import { environment } from 'src/environments/environment';
 export class AppComponent {
   title = 'ngrx-demo';
   environment = environment.production
+  isLogin = false
+  constructor(private serviceApi: ApiService) {
+    this.isLogin = sessionStorage.getItem('isLogin') ? true : false
+  }
 }

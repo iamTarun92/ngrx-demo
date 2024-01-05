@@ -1,0 +1,17 @@
+{
+    "promise": {
+        "View": 1
+    },
+    "observable": {
+        "View": 1
+    },
+    "users": {
+        "View": 1
+    },
+    "counter": {
+        "View": 1
+    },
+    "posts": {
+        "View": 1
+    }
+}

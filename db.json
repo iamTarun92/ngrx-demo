@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "name": "tarun",
+      "password": "12345",
+      "gender": "male",
+      "role": "admin",
+      "isActive": true,
+      "email": "tarun@gmail.com",
+      "id": 1
+    },
+    {
+      "name": "senthil",
+      "password": "12345",
+      "gender": "male",
+      "role": "super-admin",
+      "isActive": false,
+      "email": "senthil@gmail.com",
+      "id": 2
+    }
+  ]
+}
