@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Users } from 'src/app/models/user';
+import { User } from 'src/app/models/user';
 import { Store, select } from '@ngrx/store';
 import { UserActions } from '../../store/user/user.actions';
 import * as formUser from '../../store/user/user.selectors';
-import { UsersService } from '../../services/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-user-list',
@@ -13,8 +13,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UserListComponent {
   pageTitle = 'Store'
-  users: Users[] = []
-  constructor(private userService: UsersService, private store: Store) {
+  users: User[] = []
+  constructor(private apiService: ApiService, private store: Store) {
   }
   ngOnInit(): void {
     // using store satrt here
@@ -26,7 +26,7 @@ export class UserListComponent {
 
 
     // without store get user list start here
-    this.userService.getUsers().subscribe((res: any) => {
+    this.apiService.getUsers().subscribe((res: any) => {
       this.users = res
     });
     // end here

@@ -1,11 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
 import { UserActions } from './user.actions';
-import { Users } from 'src/app/models/user';
+import { User } from 'src/app/models/user';
 
 export const userFeatureKey = 'usersState';
 
 export interface State {
-  users: Users[]
+  users: User[]
   error: string
 }
 

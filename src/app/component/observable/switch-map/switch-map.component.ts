@@ -1,8 +1,8 @@
 import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { map, debounceTime, distinctUntilChanged, switchMap, filter, pluck } from 'rxjs';
-import { Users } from 'src/app/models/user';
-import { UsersService } from 'src/app/services/users.service';
+import { User } from 'src/app/models/user';
+import { ApiService } from 'src/app/services/api.service';
 
 
 @Component({
@@ -12,20 +12,20 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class SwitchMapComponent implements AfterViewInit {
   @ViewChild('searchform') searchform?: NgForm
-  searchResults: Users[] = []
+  searchResults: User[] = []
   searchResultsCount: number = 0
 
-  constructor(private userService: UsersService) { }
+  constructor(private apiService: ApiService) { }
 
   ngAfterViewInit(): void {
-    // this.userService.getAllData('Bret').subscribe(res => console.log(res))
+    // this.apiService.getAllData('Bret').subscribe(res => console.log(res))
 
     const fromValue = this.searchform?.valueChanges
     fromValue?.pipe(
       map(data => data.searchTerm),
       debounceTime(500),
       distinctUntilChanged(),
-      switchMap(data => this.userService.getAllData(data))
+      switchMap(data => this.apiService.getAllData(data))
     ).subscribe(res => {
       this.searchResults = res
       this.searchResultsCount = this.searchResults.length

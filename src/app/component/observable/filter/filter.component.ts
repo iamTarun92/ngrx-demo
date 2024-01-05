@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { from, filter, toArray } from 'rxjs';
-import { UsersService } from 'src/app/services/users.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-filter',
@@ -25,7 +25,7 @@ export class FilterComponent implements OnInit {
   ]
   filterData1: any
   filterData2: any
-  constructor(private userData: UsersService) {
+  constructor(private apiService: ApiService) {
     // userData.getUsers().subscribe(res => {
     //   this.dataArray = res
     //   this.source = from(this.dataArray).pipe(filter(data => data?.name?.length < 7), toArray()).subscribe(res => this.data1 = res)
