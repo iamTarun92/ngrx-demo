@@ -18,14 +18,14 @@ export class SwitchMapComponent implements AfterViewInit {
   constructor(private apiService: ApiService) { }
 
   ngAfterViewInit(): void {
-    // this.apiService.getAllData('Bret').subscribe(res => console.log(res))
+    // this.apiService.getUserByString('Bret').subscribe(res => console.log(res))
 
     const fromValue = this.searchform?.valueChanges
     fromValue?.pipe(
       map(data => data.searchTerm),
       debounceTime(500),
       distinctUntilChanged(),
-      switchMap(data => this.apiService.getAllData(data))
+      switchMap(data => this.apiService.getUserByString(data))
     ).subscribe(res => {
       this.searchResults = res
       this.searchResultsCount = this.searchResults.length

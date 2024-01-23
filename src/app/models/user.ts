@@ -1,12 +1,12 @@
 export interface User {
-    address: Address;
-    company: Company;
     email: string;
     id: number;
     name: string;
     phone: string;
     username: string;
     website: string;
+    address: Address;
+    company: Company;
 }
 
 export interface Address {

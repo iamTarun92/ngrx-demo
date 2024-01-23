@@ -19,7 +19,7 @@ export class PostsEffects {
                 return this.postService.getAllPost()
                     .pipe(
                         map(response => {
-                            return loadPostsSuccess({ posts: response.body })
+                            return loadPostsSuccess({ posts: response })
                         }),
                         catchError((error) => {
                             return of(loadPostsFailure({ error }))
@@ -35,8 +35,6 @@ export class PostsEffects {
         mergeMap((action) => this.postService.addPost(action.post)
             .pipe(
                 map(post => {
-                    console.log(post);
-
                     return addPostSuccess({ post })
                 }),
                 catchError(() => EMPTY)

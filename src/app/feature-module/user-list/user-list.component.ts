@@ -26,7 +26,7 @@ export class UserListComponent {
 
 
     // without store get user list start here
-    this.apiService.getUsers().subscribe((res: any) => {
+    this.apiService.getUsers().subscribe(res => {
       this.users = res
     });
     // end here

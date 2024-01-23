@@ -24,21 +24,21 @@ export const postsReducer = createReducer(
         }
     }),
     on(postActions.editPost, (state: PostsState, { post }) => {
-        const updatedPost = state.posts.map(resPost => {
+        const posts = state.posts.map(resPost => {
             return post.id === resPost.id ? post : resPost
         })
         return {
             ...state,
-            posts: updatedPost
+            posts
         }
     }),
     on(postActions.deletePost, (state: PostsState, { id }) => {
-        const updatedPost = state.posts.filter(post => {
+        const posts = state.posts.filter(post => {
             return post.id !== id
         })
         return {
             ...state,
-            posts: updatedPost
+            posts
         }
     }),
     on(postActions.loadPostsSuccess, (state: PostsState, { posts }) => {

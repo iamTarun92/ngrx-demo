@@ -21,8 +21,6 @@ export class PostsComponent implements OnInit {
   }
 
   onDeletePost(id: any) {
-    if (confirm('Are you sure want to delete')) {
-      this.store.dispatch(deletePost({ id }))
-    }
+    this.store.dispatch(deletePost({ id }))
   }
 }

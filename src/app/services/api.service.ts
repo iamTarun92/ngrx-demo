@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
-import { Observable, map } from 'rxjs';
+import { Observable, map, take } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Post } from '../models/common';
 import { User } from '../models/user';
@@ -17,22 +17,22 @@ export class ApiService {
   getUsers(): Observable<User[]> {
     return this.httpService.get(`/users`).pipe(map(data => data as User[]))
   }
-  getUserById(id: string): Observable<User[]> {
-    return this.http.get<User[]>(`/users/${id}`)
+  getUserById(id: string): Observable<User> {
+    return this.httpService.get(`/users/${id}`).pipe(map(data => data as User))
   }
-  getAllData(searchTerm: string): Observable<User[]> {
-    return this.http.get<User[]>(`https://jsonplaceholder.typicode.com/users?q=${searchTerm}`)
+  getUserByString(searchTerm: string): Observable<User[]> {
+    return this.httpService.get(`/users?q=${searchTerm}`)
   }
-  getAllPost(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/posts`, { observe: "response" })
+  getAllPost(): Observable<Post[]> {
+    return this.httpService.get(`/posts`, { observe: "response" }).pipe(map(data => data.slice(0, 5)))
   }
   addPost(post: Post) {
-    return this.http.post(`${this.baseUrl}/posts`, post)
+    return this.http.post(this.baseUrl + `/posts`, post)
   }
 
   apiurl = 'http://localhost:3000/users';
   getAll() {
-    return this.http.get(this.apiurl)
+    return this.httpService.get('/users')
   }
 
   getJsonData() {
